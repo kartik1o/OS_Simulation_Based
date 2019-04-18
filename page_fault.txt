@@ -1,0 +1,38 @@
+#include <stdio.h>
+#include <math.h>
+#include <conio.h>
+int main()
+{
+double unmodified_pg,
+modified_page,
+mat,
+mod_percentage,
+eff_access_time,
+pg_fault_rate;
+
+    printf("Enter the time for Page Fault not modified in milliseconds: ");
+    scanf("%lf", &unmodified_pg);
+unmodified_pg *= pow(10, -3);
+
+    printf("Enter the time for Page Fault modified in milliseconds: ");
+    scanf("%lf", &modified_page);
+modified_page *= pow(10, -3); //millisecond
+
+    printf("Enter the time for Memory Access in nano seconds: ");
+    scanf("%lf", &mat);
+mat *= pow(10, -9); //nanosecond
+
+    printf("Enter the modified percentage: ");
+    scanf("%lf", &mod_percentage);
+mod_percentage = mod_percentage / 100;
+
+    printf("Enter the time for Efficiency Access in nano seconds: ");
+    scanf("%lf", &eff_access_time);
+eff_access_time *= pow(10, -9);
+
+    printf("PAGE FAULT RATE: ");
+pg_fault_rate = (eff_access_time - mat) / (mod_percentage * modified_page + (1 - mod_percentage) * unmodified_pg - mat);
+    printf("%lf", pg_fault_rate);
+
+    return 0;
+}
